@@ -76,6 +76,247 @@ paths:
       responses:
         "200":
           description: OK
+  /client:
+    post:
+      x-skaffolder-id: 5fb59a89a3e04911232322a4
+      x-skaffolder-name: create
+      x-skaffolder-id-resource: 5fb59a51a3e049112323229c
+      x-skaffolder-resource: Client
+      x-skaffolder-crudAction: create
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION create
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION create
+      tags:
+        - Client
+      parameters:
+        - name: obj
+          x-skaffolder-type: Vendor
+          in: path
+          description: Object to insert
+          required: true
+          schema:
+            type: Vendor
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Client"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                claimed:
+                  type: boolean
+                claimedinfo:
+                  type: object
+                clientlevel:
+                  type: string
+                clientname:
+                  type: string
+                clientrating:
+                  type: number
+                clienttype:
+                  type: string
+                createdby:
+                  type: object
+                datecreated:
+                  type: integer
+                datedeleted:
+                  type: integer
+                dateinactive:
+                  type: integer
+    get:
+      x-skaffolder-id: 5fb59a62a3e049112323229e
+      x-skaffolder-name: list
+      x-skaffolder-id-resource: 5fb59a51a3e049112323229c
+      x-skaffolder-resource: Client
+      x-skaffolder-crudAction: list
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION list
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: ARRAY OF Vendor
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION list
+      tags:
+        - Client
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Client"
+  "/client/{id}":
+    delete:
+      x-skaffolder-id: 5fb59a8ea3e04911232322a6
+      x-skaffolder-name: delete
+      x-skaffolder-id-resource: 5fb59a51a3e049112323229c
+      x-skaffolder-resource: Client
+      x-skaffolder-crudAction: delete
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION delete
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION delete
+      tags:
+        - Client
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id Vendor
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+    get:
+      x-skaffolder-id: 601acef4a3e049112323e878
+      x-skaffolder-name: get
+      x-skaffolder-id-resource: 5fb59a51a3e049112323229c
+      x-skaffolder-resource: Client
+      x-skaffolder-crudAction: get
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION get
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION get
+      tags:
+        - Client
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id resource
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Client"
+    post:
+      x-skaffolder-id: 5fb59a85a3e04911232322a2
+      x-skaffolder-name: update
+      x-skaffolder-id-resource: 5fb59a51a3e049112323229c
+      x-skaffolder-resource: Client
+      x-skaffolder-crudAction: update
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION update
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: Vendor
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION update
+      tags:
+        - Client
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id Vendor
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Client"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Client"
+  "/client/findByVendorName/{key}":
+    get:
+      x-skaffolder-id: 5fb59a6aa3e049112323229f
+      x-skaffolder-name: findByVendorName
+      x-skaffolder-id-resource: 5fb59a51a3e049112323229c
+      x-skaffolder-resource: Client
+      x-skaffolder-crudAction: findByVendorName
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION findByVendorName
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /findByVendorName/{key}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION findByVendorName
+      tags:
+        - Client
+      parameters:
+        - name: key
+          x-skaffolder-type: Objectid
+          in: path
+          description: Id of the resource VendorName to search
+          required: true
+          schema:
+            type: Objectid
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Client"
+  "/job/findByvendor/{key}":
+    get:
+      x-skaffolder-id: 601ad13ba3e049112323e883
+      x-skaffolder-name: findByvendor
+      x-skaffolder-id-resource: 601ad10aa3e049112323e881
+      x-skaffolder-resource: Job
+      x-skaffolder-crudAction: findByvendor
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION findByvendor
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /findByvendor/{key}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION findByvendor
+      tags:
+        - Job
+      parameters:
+        - name: key
+          x-skaffolder-type: Objectid
+          in: path
+          description: Id of model to search for
+          required: true
+          schema:
+            type: Objectid
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Job"
   "/user/{id}/changePassword":
     post:
       x-skaffolder-id: 5fb599b8a3e0491123232242
@@ -255,166 +496,6 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/User"
-  /vendor:
-    post:
-      x-skaffolder-id: 5fb59a89a3e04911232322a4
-      x-skaffolder-name: create
-      x-skaffolder-id-resource: 5fb59a51a3e049112323229c
-      x-skaffolder-resource: Vendor
-      x-skaffolder-crudAction: create
-      x-skaffolder-crudType: 
-      x-skaffolder-description: CRUD ACTION create
-      x-skaffolder-returnDesc: 
-      x-skaffolder-returnType: 
-      x-skaffolder-url: /
-      x-skaffolder-roles: []
-      summary: CRUD ACTION create
-      tags:
-        - Vendor
-      parameters:
-        - name: obj
-          x-skaffolder-type: Vendor
-          in: path
-          description: Object to insert
-          required: true
-          schema:
-            type: Vendor
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Vendor"
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                VendorName:
-                  type: string
-    get:
-      x-skaffolder-id: 5fb59a62a3e049112323229e
-      x-skaffolder-name: list
-      x-skaffolder-id-resource: 5fb59a51a3e049112323229c
-      x-skaffolder-resource: Vendor
-      x-skaffolder-crudAction: list
-      x-skaffolder-crudType: 
-      x-skaffolder-description: CRUD ACTION list
-      x-skaffolder-returnDesc: 
-      x-skaffolder-returnType: ARRAY OF Vendor
-      x-skaffolder-url: /
-      x-skaffolder-roles: []
-      summary: CRUD ACTION list
-      tags:
-        - Vendor
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Vendor"
-  "/vendor/{id}":
-    delete:
-      x-skaffolder-id: 5fb59a8ea3e04911232322a6
-      x-skaffolder-name: delete
-      x-skaffolder-id-resource: 5fb59a51a3e049112323229c
-      x-skaffolder-resource: Vendor
-      x-skaffolder-crudAction: delete
-      x-skaffolder-crudType: 
-      x-skaffolder-description: CRUD ACTION delete
-      x-skaffolder-returnDesc: 
-      x-skaffolder-returnType: 
-      x-skaffolder-url: /{id}
-      x-skaffolder-roles: []
-      summary: CRUD ACTION delete
-      tags:
-        - Vendor
-      parameters:
-        - name: id
-          x-skaffolder-type: ObjectId
-          in: path
-          description: Id Vendor
-          required: true
-          schema:
-            type: string
-      responses:
-        "200":
-          description: OK
-    post:
-      x-skaffolder-id: 5fb59a85a3e04911232322a2
-      x-skaffolder-name: update
-      x-skaffolder-id-resource: 5fb59a51a3e049112323229c
-      x-skaffolder-resource: Vendor
-      x-skaffolder-crudAction: update
-      x-skaffolder-crudType: 
-      x-skaffolder-description: CRUD ACTION update
-      x-skaffolder-returnDesc: 
-      x-skaffolder-returnType: Vendor
-      x-skaffolder-url: /{id}
-      x-skaffolder-roles: []
-      summary: CRUD ACTION update
-      tags:
-        - Vendor
-      parameters:
-        - name: id
-          x-skaffolder-type: ObjectId
-          in: path
-          description: Id Vendor
-          required: true
-          schema:
-            type: string
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Vendor"
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Vendor"
-  "/vendor/findByVendorName/{key}":
-    get:
-      x-skaffolder-id: 5fb59a6aa3e049112323229f
-      x-skaffolder-name: findByVendorName
-      x-skaffolder-id-resource: 5fb59a51a3e049112323229c
-      x-skaffolder-resource: Vendor
-      x-skaffolder-crudAction: findByVendorName
-      x-skaffolder-crudType: 
-      x-skaffolder-description: CRUD ACTION findByVendorName
-      x-skaffolder-returnDesc: 
-      x-skaffolder-returnType: 
-      x-skaffolder-url: /findByVendorName/{key}
-      x-skaffolder-roles: []
-      summary: CRUD ACTION findByVendorName
-      tags:
-        - Vendor
-      parameters:
-        - name: key
-          x-skaffolder-type: Objectid
-          in: path
-          description: Id of the resource VendorName to search
-          required: true
-          schema:
-            type: Objectid
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Vendor"
 security:
   - bearerAuth: []
 components:
@@ -424,6 +505,96 @@ components:
       scheme: bearer
       bearerFormat: JWT
   schemas:
+    Client:
+      x-skaffolder-id: 5fb59a51a3e049112323229c
+      x-skaffolder-id-db: 5fb599b7a3e0491123232236
+      x-skaffolder-id-entity: 5fb59a50a3e049112323229a
+      x-skaffolder-url: /client
+      properties:
+        _id:
+          type: string
+          x-skaffolder-required: true
+        claimed:
+          type: boolean
+          x-skaffolder-id-attr: 601acef3a3e049112323e870
+          x-skaffolder-type: Boolean
+        claimedinfo:
+          type: object
+          x-skaffolder-id-attr: 601acef3a3e049112323e871
+          x-skaffolder-type: Custom
+        clientlevel:
+          type: string
+          x-skaffolder-id-attr: 601ad1b3a3e049112323e885
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        clientname:
+          type: string
+          x-skaffolder-id-attr: 5fb59a50a3e049112323229b
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+          x-skaffolder-unique: true
+        clientrating:
+          type: number
+          x-skaffolder-id-attr: 601acef3a3e049112323e872
+          x-skaffolder-type: Decimal
+        clienttype:
+          type: string
+          x-skaffolder-id-attr: 601ace67a3e049112323e86d
+          x-skaffolder-type: String
+        createdby:
+          type: object
+          x-skaffolder-id-attr: 601acef3a3e049112323e875
+          x-skaffolder-type: Custom
+        datecreated:
+          type: integer
+          x-skaffolder-id-attr: 601acef3a3e049112323e876
+          x-skaffolder-type: Date
+        datedeleted:
+          type: integer
+          x-skaffolder-id-attr: 601acef3a3e049112323e874
+          x-skaffolder-type: Date
+        dateinactive:
+          type: integer
+          x-skaffolder-id-attr: 601acef3a3e049112323e873
+          x-skaffolder-type: Date
+      x-skaffolder-relations: 
+      required:
+        - _id
+        - clientlevel
+        - clientname
+    Job:
+      x-skaffolder-id: 601ad10aa3e049112323e881
+      x-skaffolder-id-db: 5fb599b7a3e0491123232236
+      x-skaffolder-id-entity: 601ad10aa3e049112323e87c
+      x-skaffolder-url: /job
+      properties:
+        _id:
+          type: string
+          x-skaffolder-required: true
+        dateposted:
+          type: integer
+          x-skaffolder-id-attr: 601ad10aa3e049112323e87f
+          x-skaffolder-type: Date
+        jobdescription:
+          type: string
+          x-skaffolder-id-attr: 601ad10aa3e049112323e87e
+          x-skaffolder-type: String
+        jobtitle:
+          type: string
+          x-skaffolder-id-attr: 601ad10aa3e049112323e87d
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+          x-skaffolder-unique: true
+      x-skaffolder-relations:
+        vendor:
+          x-skaffolder-id: 601ad10aa3e049112323e880
+          x-skaffolder-type: m:m
+          x-skaffolder-required: true
+          x-skaffolder-ent1: 601ad10aa3e049112323e87c
+          x-skaffolder-ent2: 5fb59a50a3e049112323229a
+      required:
+        - _id
+        - jobtitle
     User:
       x-skaffolder-id: 5fb599b8a3e049112323223f
       x-skaffolder-id-db: 5fb599b7a3e0491123232236
@@ -465,26 +636,35 @@ components:
         - _id
         - password
         - username
-    Vendor:
-      x-skaffolder-id: 5fb59a51a3e049112323229c
-      x-skaffolder-id-db: 5fb599b7a3e0491123232236
-      x-skaffolder-id-entity: 5fb59a50a3e049112323229a
-      x-skaffolder-url: /vendor
-      properties:
-        _id:
-          type: string
-          x-skaffolder-required: true
-        VendorName:
-          type: string
-          x-skaffolder-id-attr: 5fb59a50a3e049112323229b
-          x-skaffolder-type: String
-      x-skaffolder-relations: 
-      required:
-        - _id
   x-skaffolder-db:
     - x-skaffolder-id: 5fb599b7a3e0491123232236
       x-skaffolder-name: SVRSample1_db
   x-skaffolder-page:
+    - x-skaffolder-id: 601acef4a3e049112323e877
+      x-skaffolder-name: ClientEdit
+      x-skaffolder-url: /clients/{id}
+      x-skaffolder-template: Edit_Crud
+      x-skaffolder-resource: 5fb59a51a3e049112323229c
+      x-skaffolder-services:
+        - 5fb59a89a3e04911232322a4
+        - 5fb59a85a3e04911232322a2
+        - 601acef4a3e049112323e878
+        - 601ad13ba3e049112323e883
+      x-skaffolder-nesteds: 
+      x-skaffolder-links: 
+      x-skaffolder-roles: []
+    - x-skaffolder-id: 601acef4a3e049112323e87a
+      x-skaffolder-name: ClientList
+      x-skaffolder-url: /clients
+      x-skaffolder-template: List_Crud
+      x-skaffolder-resource: 5fb59a51a3e049112323229c
+      x-skaffolder-services:
+        - 5fb59a8ea3e04911232322a6
+        - 5fb59a62a3e049112323229e
+      x-skaffolder-nesteds: 
+      x-skaffolder-links:
+        - 601acef4a3e049112323e877
+      x-skaffolder-roles: []
     - x-skaffolder-id: 5fb599b7a3e049112323223e
       x-skaffolder-name: Home
       x-skaffolder-url: /home
@@ -492,7 +672,9 @@ components:
       x-skaffolder-resource: 
       x-skaffolder-services: 
       x-skaffolder-nesteds: 
-      x-skaffolder-links: 
+      x-skaffolder-links:
+        - 601ace75a3e049112323e86f
+        - 601acef4a3e049112323e87a
       x-skaffolder-roles: []
     - x-skaffolder-id: 5fb59ad0a3e04911232322a9
       x-skaffolder-name: UserEdit
@@ -500,13 +682,23 @@ components:
       x-skaffolder-template: Edit_Crud
       x-skaffolder-resource: 5fb599b8a3e049112323223f
       x-skaffolder-services:
-        - 5fb599b8a3e0491123232247
-        - 5fb599b8a3e0491123232248
-        - 5fb599b8a3e0491123232243
         - 5fb599b8a3e0491123232244
+        - 5fb599b8a3e0491123232243
         - 5fb599b8a3e0491123232245
       x-skaffolder-nesteds: 
       x-skaffolder-links: 
+      x-skaffolder-roles: []
+    - x-skaffolder-id: 601ace75a3e049112323e86f
+      x-skaffolder-name: UserList
+      x-skaffolder-url: /users
+      x-skaffolder-template: List_Crud
+      x-skaffolder-resource: 5fb599b8a3e049112323223f
+      x-skaffolder-services:
+        - 5fb599b8a3e0491123232247
+        - 5fb599b8a3e0491123232248
+      x-skaffolder-nesteds: 
+      x-skaffolder-links:
+        - 5fb59ad0a3e04911232322a9
       x-skaffolder-roles: []
   x-skaffolder-roles: 
     - x-skaffolder-id: 5fb599b8a3e0491123232241

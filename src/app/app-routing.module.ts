@@ -13,8 +13,11 @@ const routes: Routes = [
 
     /* START MY VIEWS */
 
+    { path: 'clients/:id', loadChildren: './pages/client-edit/client-edit.module#ClientEditModule', canActivate: [AuthGuard] },
+    { path: 'clients', loadChildren: './pages/client-list/client-list.module#ClientListModule', canActivate: [AuthGuard] },
     { path: 'home', loadChildren: './pages/home/home.module#HomeModule', canActivate: [AuthGuard] },
     { path: 'users/:id', loadChildren: './pages/user-edit/user-edit.module#UserEditModule', canActivate: [AuthGuard] },
+    { path: 'users', loadChildren: './pages/user-list/user-list.module#UserListModule', canActivate: [AuthGuard] },
 
  /* END MY VIEWS */
 

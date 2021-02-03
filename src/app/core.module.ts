@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 
 /* START MY SERVICES IMPORTS */
 // Do not edit this comment content, it will be overwritten in next Skaffolder generation
+import { ClientService } from './services/client.service';
+import { JobService } from './services/job.service';
 import { UserService } from './services/user.service';
-import { VendorService } from './services/vendor.service';
 
 /* END MY SERVICES IMPORTS */
 
@@ -15,8 +16,9 @@ import { AuthenticationService } from './security/authentication.service';
   providers: [
     /* START PROVIDERS */
 // Do not edit this comment content, it will be overwritten in next Skaffolder generation
+    ClientService,
+    JobService,
     UserService,
-    VendorService,
  /* END PROVIDERS */
 
     // SECURITY

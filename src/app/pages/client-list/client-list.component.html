@@ -1,0 +1,141 @@
+<!-- TITLE -->
+<div class="mb-40 mt-40">
+    <h1>Client List</h1>
+</div>
+
+<!-- SEARCH FORM -->
+<div class="card">
+
+    <div class="card-header">
+        <i class="fa fa-search"></i> Search
+    </div>
+    <div class="card-body">
+        <form #searchForm="ngForm">
+            <div class="row justify-content-md-center">
+                <div class="col-md-10">
+                    <div class="form-group ">
+                        <input type="checkbox" [(ngModel)]="search.claimed" name="claimed">
+                        <label>Claimed</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="claimedinfo">Claimedinfo</label>
+                        <input type="text" class="form-control" id="claimedinfo" [(ngModel)]="search.claimedinfo" name="claimedinfo" #claimedinfo="ngModel">
+                    </div>
+                    <div class="form-group">
+                        <label for="clientlevel">Clientlevel</label>
+                        <input type="text" class="form-control" id="clientlevel" [(ngModel)]="search.clientlevel" name="clientlevel" #clientlevel="ngModel">
+                    </div>
+                    <div class="form-group">
+                        <label for="clientname">Clientname</label>
+                        <input type="text" class="form-control" id="clientname" [(ngModel)]="search.clientname" name="clientname" #clientname="ngModel">
+                    </div>
+                    <div class="form-group">
+                        <label for="clientrating">Clientrating</label>
+                        <input type="text" class="form-control" id="clientrating" [(ngModel)]="search.clientrating" name="clientrating" #clientrating="ngModel">
+                    </div>
+                    <div class="form-group">
+                        <label for="clienttype">Clienttype</label>
+                        <input type="text" class="form-control" id="clienttype" [(ngModel)]="search.clienttype" name="clienttype" #clienttype="ngModel">
+                    </div>
+                    <div class="form-group">
+                        <label for="createdby">Createdby</label>
+                        <input type="text" class="form-control" id="createdby" [(ngModel)]="search.createdby" name="createdby" #createdby="ngModel">
+                    </div>
+                    <div class="form-group">
+                        <label for="datecreated">Datecreated</label>
+                        <input type="date" class="form-control" id="datecreated" [(ngModel)]="search.datecreated" name="datecreated" #datecreated="ngModel">
+                    </div>
+                    <div class="form-group">
+                        <label for="datedeleted">Datedeleted</label>
+                        <input type="date" class="form-control" id="datedeleted" [(ngModel)]="search.datedeleted" name="datedeleted" #datedeleted="ngModel">
+                    </div>
+                    <div class="form-group">
+                        <label for="dateinactive">Dateinactive</label>
+                        <input type="date" class="form-control" id="dateinactive" [(ngModel)]="search.dateinactive" name="dateinactive" #dateinactive="ngModel">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- TABLE -->
+<table class="table mt-40">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">claimed</th>
+            <th scope="col">claimedinfo</th>
+            <th scope="col">clientlevel</th>
+            <th scope="col">clientname</th>
+            <th scope="col">clientrating</th>
+            <th scope="col">clienttype</th>
+            <th scope="col">createdby</th>
+            <th scope="col">datecreated</th>
+            <th scope="col">datedeleted</th>
+            <th scope="col">dateinactive</th>
+            <th>Remove</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of list | async | search: { 'claimed': search.claimed, 'claimedinfo': search.claimedinfo, 'clientlevel': search.clientlevel, 'clientname': search.clientname, 'clientrating': search.clientrating, 'clienttype': search.clienttype, 'createdby': search.createdby, 'datecreated': search.datecreated, 'datedeleted': search.datedeleted, 'dateinactive': search.dateinactive }">
+            <!-- ATTRIBUTES -->
+            <td>
+                <a [routerLink]="['/clients', item.id]">{{item.id}}</a>
+            </td>
+            <td>{{item.claimed }}</td>
+            <td>{{item.claimedinfo }}</td>
+            <td>{{item.clientlevel }}</td>
+            <td>{{item.clientname }}</td>
+            <td>{{item.clientrating }}</td>
+            <td>{{item.clienttype }}</td>
+            <td>{{item.createdby }}</td>
+            <td>{{item.datecreated | date }}</td>
+            <td>{{item.datedeleted | date }}</td>
+            <td>{{item.dateinactive | date }}</td>
+
+            <!-- DELETE BUTTON -->
+            <td>
+                <button class="btn btn-danger text-center" data-toggle="modal" data-target="#deleteModal" (click)="selectId(item.id)">
+                    <span>
+                        <i class="fa fa-trash"></i>
+                    </span>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+    <div class="no-result" *ngIf="(list | async |  search: {   'claimed': search.claimed ,  'claimedinfo': search.claimedinfo ,  'clientlevel': search.clientlevel ,  'clientname': search.clientname ,  'clientrating': search.clientrating ,  'clienttype': search.clienttype ,  'createdby': search.createdby ,  'datecreated': search.datecreated ,  'datedeleted': search.datedeleted ,  'dateinactive': search.dateinactive  }).length == 0">
+        No items found
+    </div>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    <i class="fa fa-times-circle"></i>&nbsp;&nbsp;Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Do you want remove item?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteItem()">YES</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- BUTTON -->
+<button class="btn btn-primary text-center pull-right mb-20" routerLink="/clients/new">
+    <span>
+        <i class="fa fa-plus"></i>
+    </span>
+</button>
+
+<div class="clearfix"></div>

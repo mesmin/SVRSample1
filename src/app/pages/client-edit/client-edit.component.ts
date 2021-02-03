@@ -6,49 +6,60 @@ import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection 
 import { Observable } from 'rxjs';
 
 // Import Services
-import { UserService } from '../../services/user.service';
+import { ClientService } from '../../services/client.service';
+import { JobService } from '../../services/job.service';
 
 // Import Models
-import { User } from '../../domain/svrsample1_db/user';
+import { Client } from '../../domain/svrsample1_db/client';
+import { Job } from '../../domain/svrsample1_db/job';
 
 // START - USED SERVICES
 /**
-* UserService.create
+* ClientService.create
 *	@description CRUD ACTION create
+*	@param Vendor obj Object to insert
 *
-* UserService.update
+* ClientService.update
 *	@description CRUD ACTION update
-*	@param ObjectId id Id
+*	@param ObjectId id Id Vendor
+*	@returns Vendor
 *
-* UserService.get
+* ClientService.get
 *	@description CRUD ACTION get
 *	@param ObjectId id Id resource
+*
+* JobService.findByvendor
+*	@description CRUD ACTION findByvendor
+*	@param Objectid key Id of model to search for
 *
 */
 // END - USED SERVICES
 
 /**
- * This component allows to edit a  User
+ * This component allows to edit a  Client
  */
 @Component({
-    selector: 'app-user-edit',
-    templateUrl: 'user-edit.component.html',
-    styleUrls: ['user-edit.component.css']
+    selector: 'app-client-edit',
+    templateUrl: 'client-edit.component.html',
+    styleUrls: ['client-edit.component.css']
 })
-export class UserEditComponent implements OnInit {
+export class ClientEditComponent implements OnInit {
     item: any = {};
-    itemDoc: AngularFirestoreDocument<User>;
+    itemDoc: AngularFirestoreDocument<Client>;
     isNew: Boolean = true;
     formValid: Boolean;
 
     
 
+    externalJob_vendor: Job[];
 
     constructor(
-        private userService: UserService,
+        private clientService: ClientService,
+        private jobService: JobService,
         private route: ActivatedRoute,
         private location: Location) {
         // Init list
+        this.externalJob_vendor = [];
     }
 
     /**
@@ -59,9 +70,10 @@ export class UserEditComponent implements OnInit {
             const id: string = param['id'];
             if (id !== 'new') {
                 this.isNew = false;
-                this.itemDoc = this.userService.get(id);
+                this.itemDoc = this.clientService.get(id);
                 this.itemDoc.valueChanges().subscribe(item => this.item = item);
 
+                this.jobService.findByVendor(id).subscribe(list => this.externalJob_vendor = list);
             }
             // Get relations
         });
@@ -70,21 +82,21 @@ export class UserEditComponent implements OnInit {
 
 
     /**
-     * Save User
+     * Save Client
      *
      * @param {boolean} formValid Form validity check
-     * @param User item User to save
+     * @param Client item Client to save
      */
     save(formValid: boolean): void {
         this.formValid = formValid;
         if (formValid) {
             if (this.isNew) {
                 // Create
-                this.userService.create(this.item);
+                this.clientService.create(this.item);
                 this.isNew = false;
             } else {
                 // Update
-                this.userService.update(this.itemDoc, this.item);
+                this.clientService.update(this.itemDoc, this.item);
             }
             this.goBack();
         }
